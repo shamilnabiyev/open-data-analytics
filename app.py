@@ -4,7 +4,8 @@ from dash import Dash, dcc, html
 import plotly.express as px
 import pandas as pd
 
-app = Dash('Open Data Analytics', external_stylesheets=[dbc.themes.BOOTSTRAP])
+app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+app.title = 'Open Data Analytics'
 
 months_dict = {
     1: 'Janauary',
@@ -31,7 +32,7 @@ options = list(map(lambda x: {'label': months_dict[x], 'value': x}, grouped.grou
 
 row1 = dbc.Row(
     dbc.Col(
-        html.H1('Homepage', style={'textAlign': 'center'}),
+        html.H1('Open Data Analytics', style={'textAlign': 'center'}),
         md=12
     )
 )
@@ -62,10 +63,8 @@ container = dbc.Container(
 app.layout = container
 
 
-@app.callback(
-    Output('scatter-plot-delays', 'figure'),
-    Input('select-months', 'value')
-)
+@app.callback(Output('scatter-plot-delays', 'figure'),
+              Input('select-months', 'value'))
 def update_plot(selected_month):
     val = int(selected_month)
     fig = px.scatter(data_frame=grouped.get_group(val),
