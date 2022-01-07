@@ -36,6 +36,7 @@ row1 = dbc.Row(
         md=12
     )
 )
+
 row2 = dbc.Row(
     dbc.Col(
         children=[
