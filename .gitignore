@@ -1,3 +1,5 @@
 venv
 data/.ipynb_checkpoints
 data/AutogluonModels
+jupyter/.ipynb_checkpoints
+jupyter/AutogluonModels/
